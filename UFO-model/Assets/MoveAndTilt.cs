@@ -4,55 +4,38 @@ using UnityEngine;
 
 public class MoveAndTilt : MonoBehaviour
 {
-    // Speed at which the object moves
-    public float moveSpeed = 10.0f;
+    public float speed = 10.0f;
+    public float tiltAmount = 15.0f;
+    public float tiltSmoothTime = 0.5f;
 
-    // Maximum tilt angle
-    public float maxTiltAngle = 15.0f;
+    private float tiltVelocityX;
+    private float tiltVelocityZ;
 
-    // Tilt speed
-    public float tiltSpeed = 2.0f;
-
-    // Current tilt angle
-    private float currentTiltAngle = 0.0f;
-
-    // Update is called once per frame
     void Update()
     {
-        // Get input for movement
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-
         // Calculate the direction to move in
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
 
         // Move the object
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        transform.position += moveDirection * speed * Time.deltaTime;
 
-        // Calculate the target tilt angle based on the direction of movement
-        float targetTiltAngle = 0.0f;
-        if (Mathf.Abs(horizontalInput) == Mathf.Abs(verticalInput))
+        // Tilt on x axis when getting a vertical input
+        float tiltX = 0.0f;
+        if (verticalInput != 0)
         {
-            targetTiltAngle = maxTiltAngle * ((horizontalInput + verticalInput) / 2);
-            // Tilt the object towards the target tilt angle
-            currentTiltAngle = Mathf.Lerp(currentTiltAngle, targetTiltAngle, tiltSpeed * Time.deltaTime);
-            transform.localRotation = Quaternion.Euler(currentTiltAngle, 0, currentTiltAngle);
+            tiltX = tiltAmount * verticalInput;
         }
-        else if (Mathf.Abs(horizontalInput) > Mathf.Abs(verticalInput))
+
+        // Tilt on z axis when getting a horizontal input
+        float tiltZ = 0.0f;
+        if (horizontalInput != 0)
         {
-            // Tilt on the horizontal axis
-            targetTiltAngle = maxTiltAngle * horizontalInput;
-            // Tilt the object towards the target tilt angle
-            currentTiltAngle = Mathf.Lerp(currentTiltAngle, targetTiltAngle, tiltSpeed * Time.deltaTime);
-            transform.localRotation = Quaternion.Euler(0, 0, currentTiltAngle);
+            tiltZ = tiltAmount * horizontalInput;
         }
-        else
-        {
-            // Tilt on the vertical axis
-            targetTiltAngle = maxTiltAngle * verticalInput;
-            // Tilt the object towards the target tilt angle
-            currentTiltAngle = Mathf.Lerp(currentTiltAngle, targetTiltAngle, tiltSpeed * Time.deltaTime);
-            transform.localRotation = Quaternion.Euler(currentTiltAngle, 0, 0);
-        }
+
+        // Smoothly rotate the object
+        transform.rotation = Quaternion.Euler(Mathf.SmoothDampAngle(transform.rotation.eulerAngles.x, tiltX, ref tiltVelocityX, tiltSmoothTime), 0, Mathf.SmoothDampAngle(transform.rotation.eulerAngles.z, tiltZ, ref tiltVelocityZ, tiltSmoothTime));
     }
 }
