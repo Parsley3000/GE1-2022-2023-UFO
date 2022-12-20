@@ -60,6 +60,8 @@
     <Compile Include="Assets\CameraFollows.cs" />
     <Compile Include="Assets\FollowChild.cs" />
     <Compile Include="Assets\Laser.cs" />
+    <Compile Include="Assets\TractorBeam.cs" />
+    <Compile Include="Assets\FloatObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
