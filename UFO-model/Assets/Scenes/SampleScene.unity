@@ -886,6 +886,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UFO 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4335739947141296721, guid: bfdf71840fc1a2b42bfd9b425655b021, type: 3}
+      propertyPath: pullTag
+      value: Destroyable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335739947141296721, guid: bfdf71840fc1a2b42bfd9b425655b021, type: 3}
+      propertyPath: thickness
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4335739947900338038, guid: bfdf71840fc1a2b42bfd9b425655b021, type: 3}
       propertyPath: moo1
       value: 
