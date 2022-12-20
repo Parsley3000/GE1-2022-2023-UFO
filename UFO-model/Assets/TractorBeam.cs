@@ -2,62 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class TractorBeam : MonoBehaviour
 {
-    // Public variables
-    public float T_BeamRange = 100f; // The range of the T_Beam
-    public float T_BeamWidth = 2f; // The width of the T_Beam
-    public float T_BeamWidth_end = 3f;
-    public float T_BeamAlpha = 0.5f; // The alpha value of the T_Beam's color (0 = transparent, 1 = opaque)
+    // The line renderer that will display the tractor beam
+    private LineRenderer lineRenderer;
 
-    // Private variables
-    private LineRenderer T_BeamLine; // Reference to the line renderer component
-    private RaycastHit hit; // Raycast hit information
+    // The force with which the beam will pull objects towards its origin
+    public float pullForce = 10f;
+
+    // The thickness of the beam
+    public float thickness = 2f;
 
     void Start()
     {
         // Get the line renderer component
-        T_BeamLine = GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     void Update()
     {
-        // Check if the left mouse button is held down
+        // Only show the line renderer and apply the tractor beam if the left mouse button is held down
         if (Input.GetMouseButton(1))
         {
-            // Enable the line renderer and shoot the T_Beam
-            T_BeamLine.enabled = true;
-            ShootT_Beam();
+            // Update the line renderer to match the position of the beam
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, transform.position + transform.forward * 100f);
+
+            // Set the thickness of the beam
+            lineRenderer.startWidth = thickness;
+            lineRenderer.endWidth = thickness;
+
+            // Cast a ray from the beam's origin in the direction of the beam
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                // If the ray hits an object with the "Destroyable" tag, apply a force to it to pull it towards the beam's origin
+                GameObject hitObject = hit.collider.gameObject;
+                if (hitObject.tag == "Destroyable")
+                {
+                    hitObject.GetComponent<Rigidbody>().AddForce((transform.position - hitObject.transform.position).normalized * pullForce);
+
+                    // If the object is close enough to the beam's origin, destroy it
+                    if (Vector3.Distance(transform.position, hitObject.transform.position) < 3f)
+                    {
+                        Destroy(hitObject);
+                    }
+                }
+            }
         }
         else
         {
-            // Disable the line renderer
-            T_BeamLine.enabled = false;
+            // Hide the line renderer when the left mouse button is not held down
+            lineRenderer.startWidth = 0f;
+            lineRenderer.endWidth = 0f;
         }
-    }
-
-    void ShootT_Beam()
-    {
-        // Set the start position of the T_Beam to the position of the object
-        T_BeamLine.SetPosition(0, transform.position);
-
-        // Check if the T_Beam hits anything
-        if (Physics.Raycast(transform.position, transform.forward, out hit, T_BeamRange))
-        {
-            // Set the end position of the T_Beam to the hit point
-            T_BeamLine.SetPosition(1, hit.point);
-        }
-        else
-        {
-            // Set the end position of the T_Beam to the maximum range
-            T_BeamLine.SetPosition(1, transform.position + (transform.forward * T_BeamRange));
-        }
-
-        // Set the width and color of the T_Beam
-        T_BeamLine.startWidth = T_BeamWidth;
-        T_BeamLine.endWidth = T_BeamWidth_end;
-        T_BeamLine.startColor = new Color(1, 1, 1, T_BeamAlpha); // set the alpha value of the T_Beam's color
-        T_BeamLine.endColor = new Color(1, 1, 1, T_BeamAlpha); // set the alpha value of the T_Beam's color
     }
 }
+
+
+
+
+
