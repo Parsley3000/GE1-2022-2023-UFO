@@ -359,9 +359,11 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/CameraFollows.cs"
+"Assets/cowSpawner.cs"
 "Assets/FloatObject.cs"
 "Assets/FollowChild.cs"
 "Assets/Laser.cs"
+"Assets/LegSpawner.cs"
 "Assets/MoveAndTilt.cs"
 "Assets/TractorBeam.cs"
 -langversion:9.0

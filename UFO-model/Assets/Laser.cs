@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class Laser : MonoBehaviour
     public float laserRange = 100f; // The range of the laser
     public float laserWidth = 0.1f; // The width of the laser
     public Color laserColor = Color.blue; // The color of the laser
+    public AudioSource moo1;
+    public AudioSource moo2;
+    private Boolean mooSelect = true;
 
     // Private variables
     private LineRenderer laserLine; // Reference to the line renderer component
@@ -51,6 +55,17 @@ public class Laser : MonoBehaviour
             {
                 // Destroy the hit object
                 Destroy(hit.collider.gameObject);
+                if (mooSelect == true)
+                {
+                    moo1.Play();
+                    mooSelect = false;
+                }
+                else
+                {
+                    moo2.Play();
+                    mooSelect = true;
+                }
+                
             }
         }
         else

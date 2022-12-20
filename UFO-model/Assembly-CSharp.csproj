@@ -62,6 +62,8 @@
     <Compile Include="Assets\CameraFollows.cs" />
     <Compile Include="Assets\FollowChild.cs" />
     <Compile Include="Assets\Laser.cs" />
+    <Compile Include="Assets\LegSpawner.cs" />
+    <Compile Include="Assets\cowSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
