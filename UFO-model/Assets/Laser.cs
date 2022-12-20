@@ -45,6 +45,13 @@ public class Laser : MonoBehaviour
         {
             // Set the end position of the laser to the hit point
             laserLine.SetPosition(1, hit.point);
+
+            // Check if the hit object has a "Destroyable" tag
+            if (hit.collider.CompareTag("Destroyable"))
+            {
+                // Destroy the hit object
+                Destroy(hit.collider.gameObject);
+            }
         }
         else
         {
