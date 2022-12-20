@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets\MoveAndTilt.cs" />
     <Compile Include="Assets\CameraFollows.cs" />
+    <Compile Include="Assets\FollowChild.cs" />
+    <Compile Include="Assets\Laser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
