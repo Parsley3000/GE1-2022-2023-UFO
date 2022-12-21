@@ -13,6 +13,13 @@ public class RotateSeg1 : MonoBehaviour
     // Rotation applied to the object
     private float currentRotation;
 
+    private void Start()
+    {
+        // Rotate the object on its z-axis
+        transform.Rotate(0, 0, initialRotation * Time.deltaTime);
+        currentRotation = initialRotation;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,12 +32,6 @@ public class RotateSeg1 : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        // Rotate the object on its z-axis
-        transform.Rotate(0, 0, initialRotation * Time.deltaTime);
-        currentRotation = initialRotation;
-    }
 }
 
 
