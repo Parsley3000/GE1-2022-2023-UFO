@@ -368,6 +368,8 @@
 "Assets/Laser.cs"
 "Assets/LegSpawner.cs"
 "Assets/MoveAndTilt.cs"
+"Assets/RotateSeg1.cs"
+"Assets/SpawnLeg.cs"
 "Assets/TractorBeam.cs"
 -langversion:9.0
 

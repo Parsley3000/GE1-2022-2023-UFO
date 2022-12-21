@@ -28,6 +28,9 @@ public class MoveAndTilt : MonoBehaviour
         // Calculate the direction to move in
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
 
+        // Rotate the move direction by the current y rotation of the object
+        moveDirection = Quaternion.Euler(0, yRotation, 0) * moveDirection;
+
         // Move the object
         transform.position += moveDirection * speed * Time.deltaTime;
 
