@@ -3,6 +3,9 @@ TUDublin Game Engines 2022 - 2023. An interactive unity model of a UFO in a simi
 
 Video: https://youtu.be/Hi2if0D-G8E
 
+![image](https://user-images.githubusercontent.com/56588308/209019654-3565d71b-b0bd-4f04-9837-80c0834881af.png)
+
+
 # Current Features & Assets
 - Directional horzontial movement of model
 - Lateral movement of model
