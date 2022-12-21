@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,9 @@ public class TractorBeam : MonoBehaviour
 {
     // The line renderer that will display the tractor beam
     private LineRenderer lineRenderer;
+    public AudioSource teleport; 
+    public AudioSource TBeam_warp_sound;
+    private Boolean skipWarpSound = true;
 
     // The force with which the beam will pull objects towards its origin
     public float pullForce = 10f;
@@ -46,6 +50,7 @@ public class TractorBeam : MonoBehaviour
                     // If the object is close enough to the beam's origin, destroy it
                     if (Vector3.Distance(transform.position, hitObject.transform.position) < 3f)
                     {
+                        teleport.Play();
                         Destroy(hitObject);
                     }
                 }
@@ -56,6 +61,11 @@ public class TractorBeam : MonoBehaviour
             // Hide the line renderer when the left mouse button is not held down
             lineRenderer.startWidth = 0f;
             lineRenderer.endWidth = 0f;
+            if(skipWarpSound == false)
+            {
+                TBeam_warp_sound.Play();
+            }
+            skipWarpSound = false;
         }
     }
 }

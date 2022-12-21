@@ -11,7 +11,9 @@ public class Laser : MonoBehaviour
     public Color laserColor = Color.blue; // The color of the laser
     public AudioSource moo1;
     public AudioSource moo2;
+    public AudioSource laserSound;
     private Boolean mooSelect = true;
+    private Boolean skipLaserSound = true;
 
     // Private variables
     private LineRenderer laserLine; // Reference to the line renderer component
@@ -36,6 +38,11 @@ public class Laser : MonoBehaviour
         {
             // Disable the line renderer
             laserLine.enabled = false;
+            if (skipLaserSound == false) {
+                laserSound.Play();
+            }
+            skipLaserSound = false;
+            
         }
     }
 
