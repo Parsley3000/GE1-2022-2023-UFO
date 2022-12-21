@@ -62,10 +62,12 @@
     <Compile Include="Assets\FloatObject.cs" />
     <Compile Include="Assets\CameraFollows.cs" />
     <Compile Include="Assets\cowSpawner.cs" />
-    <Compile Include="Assets\FollowChild.cs" />
-    <Compile Include="Assets\Laser.cs" />
     <Compile Include="Assets\SpawnLeg.cs" />
     <Compile Include="Assets\RotateSeg1.cs" />
+    <Compile Include="Assets\FollowChild.cs" />
+    <Compile Include="Assets\Laser.cs" />
+    <Compile Include="Assets\Scripts\lightRotate.cs" />
+    <Compile Include="Assets\Scripts\rotateObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

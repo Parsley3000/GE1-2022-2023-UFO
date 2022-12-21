@@ -369,6 +369,8 @@
 "Assets/LegSpawner.cs"
 "Assets/MoveAndTilt.cs"
 "Assets/RotateSeg1.cs"
+"Assets/Scripts/lightRotate.cs"
+"Assets/Scripts/rotateObject.cs"
 "Assets/SpawnLeg.cs"
 "Assets/TractorBeam.cs"
 -langversion:9.0
