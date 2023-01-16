@@ -53,6 +53,19 @@ Also learned I could have used animation to create them movement effects after c
 
 Project got me a lot more interest in Game Dev and have started playing around with Gadot in spare time now!
 
+# Classes & Models
+- Models of cow & UFO created using unity 3d objects
+- MoveAndTilt:     Movement script for UFO : Created myself
+- CameraFollow:    Camera follows game asset : Created myself
+- FollowChild:     Child follows parents but doesn't follow x & z rotation : Created myself
+- TractorBeam:     Raycast beam pulls objects, destorys when near origin : Modified from Raycasting Laser
+- Laser:           Fire laser weapon : Modified from Raycasting Laser
+- SpawnLegs:       Spawns in legs for UFO landing : Created myself
+- cowSpawner:      Randomly spawn cows at different x & z coordinates : Created myself
+
+# References
+- Solutions from former labs (mostly)
+- Raycasting Laser : https://www.youtube.com/watch?v=YjpKxjzwado&ab_channel=Unity3DSchool
 
 
 # Background & Proposal
