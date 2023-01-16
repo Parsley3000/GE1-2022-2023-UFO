@@ -1,6 +1,12 @@
 # GE1-2022-2023-UFO
 TUDublin Game Engines 2022 - 2023. An interactive unity model of a UFO in a similar style to the one depicted in the game "Destroy All Humans"  
 
+Name: Peter Keane
+
+Student number: C18361686
+
+Class: TU856
+
 Video: https://youtu.be/Hi2if0D-G8E
 
 ![image](https://user-images.githubusercontent.com/56588308/209019654-3565d71b-b0bd-4f04-9837-80c0834881af.png)
@@ -38,6 +44,14 @@ Video: https://youtu.be/Hi2if0D-G8E
 - laser (left mouse buttom)
 - tractor beam (right mouse buttom)
 
+# Learning outcomes
+
+Most proud of the movement of the UFO, tilling as it moves, while still keeping its core with lasers & Trackor beam level
+
+Learned a lot about raycasting and how it is utilized in games, such as precision AI aiming using multiple raycasts
+Also learned I could have used animation to create them movement effects after completing the project
+
+Project got me a lot more interest in Game Dev and have started playing around with Gadot in spare time now!
 
 
 
